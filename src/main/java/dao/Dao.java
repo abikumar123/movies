@@ -92,7 +92,7 @@ public class Dao {
 	public int saveMovie(Movie movie) throws ClassNotFoundException, SQLException {
 		
 		Connection conn=getConnection();
-		PreparedStatement pst=conn.prepareStatement("insert into movie values(?,?,?,?,?,?,?)");
+		PreparedStatement pst=conn.prepareStatement("insert into movie values(?,?,?,?,?,?,?,?)");
 		pst.setInt(1, movie.getMovieid());
 		pst.setString(2, movie.getMoivename());
 		pst.setDouble(3, movie.getMovieprice());
@@ -100,8 +100,11 @@ public class Dao {
 		pst.setString(5, movie.getMoviegenre());
 		pst.setString(6, movie.getMovielanguage());
 		
+		
 		Blob iamgeBlob =new SerialBlob(movie.getMovieimage());
 		pst.setBlob(7, iamgeBlob);
+		
+		pst.setString(8, movie.getMovieDescription());
 		
 		return pst.executeUpdate();
 		
@@ -126,6 +129,7 @@ public class Dao {
 			Blob b=rs.getBlob(7);
 			byte[] img=b.getBytes(1, (int)b.length());
 			movie.setMovieimage(img);
+			movie.setMovieDescription(rs.getString(8));
 			movies.add(movie);
 			
 			
@@ -158,6 +162,7 @@ public class Dao {
 		Blob b=rs.getBlob(7);
 		byte[] img=b.getBytes(1, (int)b.length());
 		movie.setMovieimage(img);
+		movie.setMovieDescription(rs.getString(8));
 		
 		return movie;
 		

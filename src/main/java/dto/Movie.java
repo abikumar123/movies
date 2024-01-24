@@ -52,7 +52,7 @@ public class Movie {
 	public void setMovieimage(byte[] movieimage) {
 		this.movieimage = movieimage;
 	}
-	public String gerMovieDescription() {
+	public String getMovieDescription() {
 		return moviedescription;
 	}
 	public void setMovieDescription(String md) {

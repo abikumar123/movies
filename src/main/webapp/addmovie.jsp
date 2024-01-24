@@ -18,8 +18,9 @@
 		movierating <input type="number" name="movierating"><br>
 		moviegenre <input type="text" name="moviegenre"><br>
 		movielanguage <input type="text" name="movielanguage"><br>
-		movieimage<input type="file" name="movieimage"><br> <input
-			type="submit">
+		movieimage<input type="file" name="movieimage"><br> 
+		moviedescription<input type="text" name="moviedescription"><br>
+		<input type="submit">
 
 
 

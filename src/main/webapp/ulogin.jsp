@@ -14,7 +14,7 @@
 
 		<input type="email" placeholder="enter the maild id" name="mail"><br>
 		<input type="password" placeholder="enter the password"
-			name="password"> <input type="submit"><br>
+			name="password"> <br> <input type="submit"><br>
 	</form>
 
 	<%String msg=(String)request.getAttribute("message"); %>

@@ -18,17 +18,13 @@
 	<%for(Movie movie:umovies){ %>
 	
 	<tr> 
-	
-	
 	<%String base64image =new String(Base64.getEncoder().encode(movie.getMovieimage())); %>
 				<td><img src="data:image/jped;base64,<%=base64image %>"
 					height="200px" width="150px"></td>
 					
-					<td><a href="watchmovie.jsp?id=<%=movie.getMovieid() %>">watch movie</a></td>
+					<td><a href="watchmovie.jsp?mid=<%=movie.getMovieid() %>">watch movie</a></td>
 					
 					
-	
-
 	 </tr>
 	
 	<%} %>
@@ -36,10 +32,5 @@
 	
 	</table>
 	
-	
-	
-	
-
-
 </body>
 </html>

@@ -25,6 +25,8 @@
 		value="<%= m.getMoviegenre() %>"> <br>
 		movielanguage: <input type="text" name="movielanguage"
 		value="<%= m.getMovielanguage() %>"> <br>
+		moviedescription: <input type="text" name="movielanguage"
+		value="<%= m.getMovieDescription() %>"> <br>
 		movieimage:<input type="file" name="movieimage"> <br>
 		
 		<input type="submit">

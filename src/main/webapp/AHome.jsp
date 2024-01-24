@@ -52,10 +52,11 @@
 				<%String base64image =new String(Base64.getEncoder().encode(movie.getMovieimage())); %>
 				<td><img src="data:image/jped;base64,<%=base64image %>"
 					height="100px" width="100px"></td>
+					<td><%= movie.getMovieDescription() %></td>
 
 				<td><a href="deletemovie?id=<%=movie.getMovieid() %>">delete</a></td>
 				<td><a href="movieedit?id=<%=movie.getMovieid() %>">edit</a></td>
-				<td><%= movie.gerMovieDescription() %></td>
+				
 				
 
 

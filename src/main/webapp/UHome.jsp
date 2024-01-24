@@ -58,7 +58,7 @@
 	</table>
 	
 	<a href="watchmovies">Watch Movies</a>
-	<a href="">Logout</a>
+	<a href="userlogout">Logout</a>
 	
 </body>
 </html>
