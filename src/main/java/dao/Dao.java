@@ -181,6 +181,33 @@ public class Dao {
 		return pst.executeUpdate();
 		
 	}
+	public List<Movie> getUserMovies(int id) throws SQLException, ClassNotFoundException {
+		Connection conn=getConnection();
+		PreparedStatement pst=conn.prepareStatement("select * from movie inner join buymovie where buymovie.userid=? and movie.movieid=buymovie.movieid ");
+		pst.setInt(1, id);
+		ResultSet rs=pst.executeQuery();
+		
+        List<Movie>  movies=new ArrayList<Movie>();
+		
+		while(rs.next()) {
+			Movie movie=new Movie();
+			movie.setMovieiid(rs.getInt(1));
+			movie.setMoivename(rs.getString(2));
+			movie.setMovieprice(rs.getDouble(3));
+			movie.setMovierating(rs.getDouble(4));
+			movie.setMoviegenre(rs.getString(5));
+			movie.setMovielanguage(rs.getString(6));
+			
+			Blob b=rs.getBlob(7);
+			byte[] img=b.getBytes(1, (int)b.length());
+			movie.setMovieimage(img);
+			movie.setMovieDescription(rs.getString(8));
+			movies.add(movie);
+			
+		}
+		return movies;
+		
+	}
 	
 
 }

@@ -8,18 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="checkpay?movie=<%=request.getAttribute("movie")%>">
+<%HttpSession s=request.getSession(); %>
+<%  Movie m=(Movie)s.getAttribute("movie");%>
 
-Enter amount to pay<input placeholder="you need to pay <%=request.getAttribute("price")%>" name="Uprice" type="number"><br>
+<form action="checkpay">
+
+Enter amount to pay<input placeholder="you need to pay <%=m.getMovieprice() %>" name="Uprice" type="number"><br>
 
 <input type="submit" >pay amount
-
+<%request.setAttribute("m", m); %>
 
 </form>
 
 <%String msg=(String)request.getAttribute("message"); %>
 	<%if(msg!=null){ %>
 	<%= msg %>
+	<%request.setAttribute("movies", request.getAttribute("movies")); %>
 	<a href="UHome.jsp">home</a>
 	<%} %>
 </body>

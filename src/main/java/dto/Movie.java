@@ -9,6 +9,7 @@ public class Movie {
 	private String moviegenre;
 	private String movielanguage;
 	private byte[] movieimage;
+	private String  moviedescription;
 	public int getMovieid() {
 		return movieid;
 	}
@@ -50,6 +51,12 @@ public class Movie {
 	}
 	public void setMovieimage(byte[] movieimage) {
 		this.movieimage = movieimage;
+	}
+	public String gerMovieDescription() {
+		return moviedescription;
+	}
+	public void setMovieDescription(String md) {
+		this.moviedescription=md;
 	}
 	
 	

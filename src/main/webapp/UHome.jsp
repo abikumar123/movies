@@ -11,8 +11,8 @@
 </head>
 <body>
 	<p>welcome to user home page</p>
-	
-	<%List<Movie> movies=(List)request.getAttribute("movies"); %>
+	<% HttpSession s=request.getSession(); %>
+	<%List<Movie> movies=(List)s.getAttribute("movies"); %>
 
 	<table border="2px" class="table">
 		<thead>
@@ -56,6 +56,9 @@
 		</tbody>
 
 	</table>
+	
+	<a href="watchmovies">Watch Movies</a>
+	<a href="">Logout</a>
 	
 </body>
 </html>

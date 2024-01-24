@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import dto.Admin;
@@ -22,16 +23,22 @@ public class UserLogin extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		String mail=req.getParameter("mail");
 		String password=req.getParameter("password");
 		
 		Dao dao=new Dao();
+		
 		try {
 			User user=dao.findByEmailUser(mail);
 			if(user!=null) {
 				if(password.equals(user.getUserpassword())){
 					
-					req.setAttribute("movies", dao.getallmovies());
+					HttpSession session=req.getSession();
+					session.setAttribute("user", user);
+					
+					session.setAttribute("movies", dao.getallmovies());
 					
 					RequestDispatcher rd=req.getRequestDispatcher("UHome.jsp");
 					rd.include(req, resp);

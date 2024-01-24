@@ -12,9 +12,9 @@
 	<br>
 	<form action="ulogin" method="post">
 
-		<input type="email" placeholder="enter the maild id" name="mail">
+		<input type="email" placeholder="enter the maild id" name="mail"><br>
 		<input type="password" placeholder="enter the password"
-			name="password"> <input type="submit">
+			name="password"> <input type="submit"><br>
 	</form>
 
 	<%String msg=(String)request.getAttribute("message"); %>

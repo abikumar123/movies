@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import dto.Movie;
@@ -19,18 +20,19 @@ public class BuyMovie extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Dao dao = new Dao();
 		int id = Integer.parseInt(req.getParameter("id"));
 
-		Dao dao = new Dao();
-
+		HttpSession s = req.getSession();
 		try {
 			Movie m = dao.findByMovieId(id);
-			req.setAttribute("price", m.getMovieprice());
-			req.setAttribute("movie", m);
+			s.setAttribute("movie", m);
+		
 			RequestDispatcher r = req.getRequestDispatcher("buymovie.jsp");
 			r.include(req, resp);
-		} catch (ClassNotFoundException | SQLException e) {
 
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -9,28 +9,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 import dao.Dao;
-import dto.Movie;
-@WebServlet("/editmovie")
-public class EditMovie extends HttpServlet{
+import dto.User;
+@WebServlet("/watchmovies")
+
+public class WatchMovies extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer movieid=Integer.parseInt(req.getParameter("id"));
+		HttpSession session =req.getSession();
+		User user=(User) session.getAttribute("user");
+		int id=user.getUserid();
+		
 		Dao dao=new Dao();
-		
 		try {
-			Movie movie=dao.findByMovieId(movieid);
-			
-			req.setAttribute("movie", movie);
-			RequestDispatcher r=req.getRequestDispatcher("editmovie.jsp");
-			
-			r.include(req, resp);
-		
+			req.setAttribute("usermovies", dao.getUserMovies(id));
+			RequestDispatcher dispatcher=req.getRequestDispatcher("usermovies.jsp");
+			dispatcher.include(req, resp);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

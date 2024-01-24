@@ -8,6 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+
+
+</style>
 </head>
 <body>
 	<p>welcome to admin home page</p>
@@ -25,6 +30,7 @@
 				<td>MovieGenre</td>
 				<td>MovieLanguage</td>
 				<td>MovieImage</td>
+				<td>Description</td>
 				<td>delete</td>
 				<td>edit</td>
 
@@ -49,6 +55,8 @@
 
 				<td><a href="deletemovie?id=<%=movie.getMovieid() %>">delete</a></td>
 				<td><a href="movieedit?id=<%=movie.getMovieid() %>">edit</a></td>
+				<td><%= movie.gerMovieDescription() %></td>
+				
 
 
 			</tr>
@@ -58,6 +66,7 @@
 
 	</table>
 
-	<a href="addmovie.jsp">addmovie</a>
+	<a href="addmovie.jsp">addmovie</a><br>
+	<a href="logout">Logout</a><br>
 </body>
 </html>
