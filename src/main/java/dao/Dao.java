@@ -213,6 +213,18 @@ public class Dao {
 		return movies;
 		
 	}
-	
+	public boolean checkUserAndMovie(int mid,int uid) throws ClassNotFoundException, SQLException {
+		Connection conn=getConnection();
+		PreparedStatement pst=conn.prepareStatement("select * from buymovie where movieid=? and userid=?");
+		pst.setInt(1, mid);
+		pst.setInt(2, uid);
+		ResultSet rs=pst.executeQuery();
+		
+		if(rs.next()) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 
 }

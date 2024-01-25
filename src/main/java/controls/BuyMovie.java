@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import dto.Movie;
+import dto.User;
 
 @WebServlet("/buymovie")
 
@@ -25,11 +26,24 @@ public class BuyMovie extends HttpServlet {
 
 		HttpSession s = req.getSession();
 		try {
+			
+			
 			Movie m = dao.findByMovieId(id);
 			s.setAttribute("movie", m);
+			User u=(User) s.getAttribute("user");
+			int uid=u.getUserid();
+			
+			if(dao.checkUserAndMovie(m.getMovieid(), uid)) {
+			
+				RequestDispatcher r = req.getRequestDispatcher("buymovie.jsp");
+				r.include(req, resp);
+			}else {
+				req.setAttribute("moviemessage","you have already bought this movie");
+				RequestDispatcher r = req.getRequestDispatcher("UHome.jsp");
+				r.include(req, resp);
+			}
 		
-			RequestDispatcher r = req.getRequestDispatcher("buymovie.jsp");
-			r.include(req, resp);
+			
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

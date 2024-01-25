@@ -56,6 +56,10 @@
 		</tbody>
 
 	</table>
+	<%String msg=(String)request.getAttribute("moviemessage"); %>
+	<%if(msg!=null){ %>
+	<%= msg %>
+	<%} %>
 	
 	<a href="watchmovies">Watch Movies</a>
 	<a href="userlogout">Logout</a>

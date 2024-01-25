@@ -15,7 +15,7 @@
 		movieid <input type="number" name="movieid" autofocus="autofocus"><br>
 		moviename <input type="text" name="moviename"><br>
 		movieprice <input type="number" name="movieprice"><br>
-		movierating <input type="number" name="movierating"><br>
+		movierating <input type="text" name="movierating"><br>
 		moviegenre <input type="text" name="moviegenre"><br>
 		movielanguage <input type="text" name="movielanguage"><br>
 		movieimage<input type="file" name="movieimage"><br> 

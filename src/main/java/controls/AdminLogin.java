@@ -27,10 +27,11 @@ public class AdminLogin extends HttpServlet{
 		try {
 			Admin admin=dao.findByEmailAdmin(mail);
 			
-			HttpSession session=req.getSession();
-			session.setAttribute("adminname", admin.getAdminname());
+			
 			if(admin!=null) {
 				if(password.equals(admin.getAdminpassword())) {
+					HttpSession session=req.getSession();
+					session.setAttribute("adminname", admin.getAdminname());
 					
 					List<Movie> movies=dao.getallmovies();
 					req.setAttribute("movies", movies);
