@@ -23,6 +23,7 @@
 					height="200px" width="150px"></td>
 					
 					<td><a href="watchmovie.jsp?mid=<%=movie.getMovieid() %>">watch movie</a></td>
+					<td><a href="deleteusermovie?mid=<%=movie.getMovieid() %>">delete movie</a></td>
 					
 					
 	 </tr>

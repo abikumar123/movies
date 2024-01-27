@@ -12,6 +12,15 @@
 <style type="text/css">
 
 
+td{
+text-align: center;
+padding: 25px;
+
+}
+img:hover {
+	  background-color: red;
+}
+
 </style>
 </head>
 <body>

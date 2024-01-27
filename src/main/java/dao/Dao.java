@@ -226,5 +226,13 @@ public class Dao {
 			return true;
 		}
 	}
+	public void deleteUserMovie(int mid,int uid) throws SQLException, ClassNotFoundException {
+		Connection conn=getConnection();
+		PreparedStatement pst=conn.prepareStatement("delete from buymovie where movieid=? and userid=?");
+		pst.setInt(1, mid);
+		pst.setInt(2, uid);
+		int r=pst.executeUpdate();
+		
+	}
 
 }

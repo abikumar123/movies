@@ -43,7 +43,7 @@ public class CheckPayment extends HttpServlet {
 				conn.close();
 				
 				req.setAttribute("message", "congrats you have brought the movie ");
-				RequestDispatcher r = req.getRequestDispatcher("UHome.jsp");
+				RequestDispatcher r = req.getRequestDispatcher("usermovies.jsp");
 				r.include(req, resp);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block

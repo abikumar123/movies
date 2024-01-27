@@ -7,6 +7,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<style type="text/css">
+
+body {
+	text-align: center;
+	text-shadow: black;
+	font-size: 30px;
+	
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,7 +26,8 @@
 
 <%String base64image =new String(Base64.getEncoder().encode(movie.getMovieimage())); %>
 				<img src="data:image/jped;base64,<%=base64image %>"
-					height="300px" width="300px">
+					height="500px" width="500px">
+					<br>
 		<%= movie.getMovieDescription()%>
 
 </body>
