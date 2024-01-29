@@ -79,7 +79,7 @@ p {
 			<h2>Login</h2>
 			<form>
 				<div class="form-group">
-					<label for="username">Username:</label> <input type="text"
+					<label for="username">Adminname:</label> <input type="text"
 						id="username" name="mail" required>
 				</div>
 				<div class="form-group">
@@ -91,7 +91,6 @@ p {
 		</div>
 
 	</form>
-
 
 	<%
 	String msg = (String) request.getAttribute("message");
