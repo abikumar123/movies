@@ -78,7 +78,7 @@ p {
 	<form action="ulogin" method="post">
 
 		<div class="login-container">
-			<h2>Login</h2>
+			<h2>Login Page</h2>
 			<form>
 				<div class="form-group">
 					<label for="username">Username:</label> <input type="text"
