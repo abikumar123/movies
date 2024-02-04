@@ -43,6 +43,7 @@ public class CheckPayment extends HttpServlet {
 				conn.close();
 				
 				req.setAttribute("message", "congrats you have brought the movie ");
+				req.setAttribute("usermovies", dao.getUserMovies(u.getUserid()));
 				RequestDispatcher r = req.getRequestDispatcher("usermovies.jsp");
 				r.include(req, resp);
 			} catch (ClassNotFoundException | SQLException e) {

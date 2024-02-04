@@ -40,8 +40,10 @@ img:hover {
 				<td>MovieLanguage</td>
 				<td>MovieImage</td>
 				<td>Description</td>
+				<td>link</td>
 				<td>delete</td>
 				<td>edit</td>
+				
 
 			</tr>
 		</thead>
@@ -62,6 +64,7 @@ img:hover {
 				<td><img src="data:image/jped;base64,<%=base64image %>"
 					height="100px" width="100px"></td>
 					<td><%= movie.getMovieDescription() %></td>
+					<td><%= movie.getMovielink() %></td>
 
 				<td><a href="deletemovie?id=<%=movie.getMovieid() %>">delete</a></td>
 				<td><a href="movieedit?id=<%=movie.getMovieid() %>">edit</a></td>

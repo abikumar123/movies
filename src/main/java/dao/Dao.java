@@ -92,7 +92,7 @@ public class Dao {
 	public int saveMovie(Movie movie) throws ClassNotFoundException, SQLException {
 		
 		Connection conn=getConnection();
-		PreparedStatement pst=conn.prepareStatement("insert into movie values(?,?,?,?,?,?,?,?)");
+		PreparedStatement pst=conn.prepareStatement("insert into movie values(?,?,?,?,?,?,?,?,?)");
 		pst.setInt(1, movie.getMovieid());
 		pst.setString(2, movie.getMoivename());
 		pst.setDouble(3, movie.getMovieprice());
@@ -105,6 +105,7 @@ public class Dao {
 		pst.setBlob(7, iamgeBlob);
 		
 		pst.setString(8, movie.getMovieDescription());
+		pst.setString(9, movie.getMovielink());
 		
 		return pst.executeUpdate();
 		
@@ -130,6 +131,7 @@ public class Dao {
 			byte[] img=b.getBytes(1, (int)b.length());
 			movie.setMovieimage(img);
 			movie.setMovieDescription(rs.getString(8));
+			movie.setMovielink(rs.getString(9));
 			movies.add(movie);
 			
 			
@@ -163,6 +165,7 @@ public class Dao {
 		byte[] img=b.getBytes(1, (int)b.length());
 		movie.setMovieimage(img);
 		movie.setMovieDescription(rs.getString(8));
+		movie.setMovielink(rs.getString(9));
 		
 		return movie;
 		
@@ -170,17 +173,19 @@ public class Dao {
 	}
 	public int updateMovie(Movie movie) throws ClassNotFoundException, SQLException {
 		Connection conn=getConnection();
-		PreparedStatement pst=conn.prepareStatement("update movie set moviename=?,movieprice=?,movierating=?,moviegenre=?,movielanguage=?,movieimage=? where movieid=?");
+		PreparedStatement pst=conn.prepareStatement("update movie set moviename=?,movieprice=?,movierating=?,moviegenre=?,movielanguage=?,movieimage=?,description=?,movielink=? where movieid=?");
 		pst.setString(1, movie.getMoivename());
 		pst.setDouble(2, movie.getMovieprice());
 		pst.setDouble(3, movie.getMovierating());
 		pst.setString(4, movie.getMoviegenre());
 		pst.setString(5, movie.getMovielanguage());
-		
-
 		Blob iamgeBlob =new SerialBlob(movie.getMovieimage());
 		pst.setBlob(6, iamgeBlob);
-		pst.setInt(7, movie.getMovieid());
+		pst.setString(7, movie.getMovieDescription());
+		pst.setString(8, movie.getMovielink());
+		
+		pst.setInt(9, movie.getMovieid());
+		
 		
 		
 		return pst.executeUpdate();
@@ -207,6 +212,7 @@ public class Dao {
 			byte[] img=b.getBytes(1, (int)b.length());
 			movie.setMovieimage(img);
 			movie.setMovieDescription(rs.getString(8));
+			movie.setMovielink(rs.getString(9));
 			movies.add(movie);
 			
 		}
@@ -233,6 +239,57 @@ public class Dao {
 		pst.setInt(2, uid);
 		int r=pst.executeUpdate();
 		
+	}
+	public int addToCart(int mid,int uid) throws ClassNotFoundException, SQLException {
+		Connection con=getConnection();
+		PreparedStatement pst=con.prepareStatement("insert into cartmovies values(?,?)");
+		pst.setInt(1, mid);
+		pst.setInt(2, uid);
+		
+		return pst.executeUpdate();
+	}
+	public boolean checkUserCart(int mid,int uid) throws SQLException, ClassNotFoundException {
+		Connection con=getConnection();
+		PreparedStatement pst=con.prepareStatement("select * from cartmovies where movieid=? and userid=?");
+		pst.setInt(1, mid);
+		pst.setInt(2, uid);
+		
+		return !pst.executeQuery().next();
+	}
+	public List<Movie> getUserCartMovies(int uid) throws SQLException, ClassNotFoundException {
+		Connection con=getConnection();
+		PreparedStatement pst=con.prepareStatement("select * from movie inner join cartmovies where cartmovies.userid=? and movie.movieid=cartmovies.movieid ");
+		pst.setInt(1, uid);
+		ResultSet rs=pst.executeQuery();
+		
+		List<Movie> movies= new ArrayList<Movie>();
+		
+		while(rs.next()) {
+			
+			Movie movie=new Movie();
+			movie.setMovieiid(rs.getInt(1));
+			movie.setMoivename(rs.getString(2));
+			movie.setMovieprice(rs.getDouble(3));
+			movie.setMovierating(rs.getDouble(4));
+			movie.setMoviegenre(rs.getString(5));
+			movie.setMovielanguage(rs.getString(6));
+			
+			Blob b=rs.getBlob(7);
+			byte[] img=b.getBytes(1, (int)b.length());
+			movie.setMovieimage(img);
+			movie.setMovieDescription(rs.getString(8));
+			movie.setMovielink(rs.getString(9));
+			movies.add(movie);
+		}
+		return movies;
+	}
+	public int removeFromCart(int mid,int uid) throws ClassNotFoundException, SQLException {
+		Connection con=getConnection();
+		PreparedStatement pst=con.prepareStatement("delete from cartmovies where movieid=? and userid=?");
+		pst.setInt(1, mid);
+		pst.setInt(2, uid);
+		
+		return pst.executeUpdate();
 	}
 
 }

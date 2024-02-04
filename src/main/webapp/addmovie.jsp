@@ -20,6 +20,7 @@
 		movielanguage <input type="text" name="movielanguage"><br>
 		movieimage<input type="file" name="movieimage"><br> 
 		moviedescription<input type="text" name="moviedescription"><br>
+		movielink<input type="text" name="movielink"><br>
 		<input type="submit">
 
 

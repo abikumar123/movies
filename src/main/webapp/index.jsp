@@ -14,6 +14,7 @@ body {
     background-color: green; /* Set a background color for the entire page */
    
     height:100vh;
+    
     justify-content: center;
     
 }

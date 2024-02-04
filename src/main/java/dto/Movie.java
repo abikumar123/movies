@@ -10,6 +10,15 @@ public class Movie {
 	private String movielanguage;
 	private byte[] movieimage;
 	private String  moviedescription;
+	private String movielink;
+	
+	public String getMovielink() {
+		return movielink;
+		
+	}
+	public void setMovielink(String movielink) {
+		this.movielink=movielink;
+	}
 	public int getMovieid() {
 		return movieid;
 	}

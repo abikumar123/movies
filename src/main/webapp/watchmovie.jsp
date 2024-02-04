@@ -28,7 +28,9 @@ body {
 				<img src="data:image/jped;base64,<%=base64image %>"
 					height="500px" width="500px">
 					<br>
-		<%= movie.getMovieDescription()%>
+		<%= movie.getMovieDescription()%><br>
+		<iframe src="<%=movie.getMovielink() %>"></iframe><br>
+		<%=movie.getMovielink() %>
 
 </body>
 </html>
