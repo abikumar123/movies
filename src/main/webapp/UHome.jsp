@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+
+#head{
+   text-align : center ;
+}
 table {
 	padding: 10px;
 	height: 100vh;
@@ -25,9 +29,7 @@ td {
 	padding: 25px;
 }
 
-body {
-	justify-content: center;
-	display: flex;
+
 }
 
 td {
@@ -43,15 +45,21 @@ td {
 	transform: scale(1.5);
 	z-index: 2;
 }
-
-h1 {
-	border: 1px solid black;
-	text-align: center;
-	text-shadow: black;
-	position: absolute;
-	display: inline;
-	text-align: center;
+#user-funtion{
+      text-align : center ;
 }
+#cart{
+   
+}
+#watch{
+   background-color : blue ;  
+}
+#log{
+    
+}
+
+
+
 </style>
 </head>
 <body>
@@ -62,10 +70,12 @@ h1 {
 	<%
 	List<Movie> movies = (List) s.getAttribute("movies");
 	%>
-	<div>
+	<div  id="head">
 		<h1>WELCOME TO HOME PAGE</h1>
 	</div>
-
+	
+	<br>
+	
 	<div>
 		<table border="2px" class="table">
 			<thead>
@@ -126,10 +136,14 @@ h1 {
 		</table>
 	</div>
 
-	<div>
-	     <a href="MovieCart">Visit to the cart</a>
-		<a href="watchmovies">Watch Movies</a><br>
-		 <a href="userlogout">Logout</a><br>
+	<div id="user-funtion">
+	
+	<button id="cart">  <a href="MovieCart">cart <box-icon name='cart-alt'></box-icon></a></button> 
+	<br>
+	  <button id="watch"><a href="watchmovies">Watch Movies</a></button>
+    <br>
+	<button id="log"> <a href="userlogout">Logout</a><br></button>	
+		
 	</div>
 
 
@@ -155,6 +169,8 @@ h1 {
 		}
 		%>
 	</div>
+
+	
 
 </body>
 </html>

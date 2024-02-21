@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
-	background-image:url("ASSETS/multi-movie-bg.jpg");
-	background-repeat:no-repeat;
-	background-size:cover;
+	background-image: url("ASSETS/multi-movie-bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	margin: 0;
 	display: flex;
 	align-items: center;
@@ -68,35 +67,50 @@ p {
 	text-align: center;
 	color: red;
 }
-keyfra
-
 
 </style>
 </head>
 <body>
 
-	
+
 	<br>
 	<form action="ulogin" method="post">
 
 		<div class="login-container">
 			<h2>Login Page</h2>
-			<form>
-				<div class="form-group">
-					<label for="username">Username:</label> <input type="text"
-						id="username" name="mail" required>
-				</div>
-				<div class="form-group">
-					<label for="password">Password:</label> <input type="password"
-						id="password" name="password" required>
-				</div>
-				<button type="submit" class="login-btn">Login</button>
+
+			<div class="form-group">
+				<label for="username">Username:</label> <input type="text"
+					id="username" name="mail" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label> <input type="password"
+					id="password" name="password" required>
+			</div>
+			<div>
+				<button type="submit" class="login-btn">Get Otp</button>
+			</div>
+
+			<div>
+				<%
+				String msg = (String) request.getAttribute("message");
+				%>
+				<%
+				if (msg != null) {
+				%>
+				<h2><%=msg%></h2>
+				<%
+				}
+				%>
+			</div>
+		</div>
+
+
 	</form>
 
-	<%String msg=(String)request.getAttribute("message"); %>
-	<%if(msg!=null){ %>
-	<%= msg %>
-	<%} %>
+
+
+
 
 </body>
 </html>

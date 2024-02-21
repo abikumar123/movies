@@ -34,8 +34,8 @@ public class AdminLogin extends HttpServlet{
 					session.setAttribute("adminname", admin.getAdminname());
 					
 					List<Movie> movies=dao.getallmovies();
-					req.setAttribute("movies", movies);
-					RequestDispatcher rd=req.getRequestDispatcher("AHome.jsp");
+					session.setAttribute("movies", movies);
+					RequestDispatcher rd=req.getRequestDispatcher("generateadminOTP");
 					rd.include(req, resp);
 					
 					

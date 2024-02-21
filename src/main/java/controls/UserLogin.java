@@ -40,7 +40,7 @@ public class UserLogin extends HttpServlet{
 					
 					session.setAttribute("movies", dao.getallmovies());
 					
-					RequestDispatcher rd=req.getRequestDispatcher("UHome.jsp");
+					RequestDispatcher rd=req.getRequestDispatcher("otp");
 					rd.include(req, resp);
 				}else {
 					

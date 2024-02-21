@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Login</title>
 
 <style type="text/css">
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
-	background-image:url("ASSETS/avatar-bg-2.jpg");
-	background-repeat:no-repeat;
-	background-size:cover;
+	background-image: url("ASSETS/avatar-bg-2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	margin: 0;
 	display: flex;
 	align-items: center;
@@ -64,16 +64,13 @@ body {
 	box-shadow: 0 0 30px #2dfd34;
 }
 
-p {
-	text-align: center;
-	color: red;
-}
+
 </style>
 </head>
 <body>
 
-	
-	<br>
+
+
 	<form action="alogin" method="post" id="form">
 		<div class="login-container">
 			<h2>Login</h2>
@@ -86,22 +83,27 @@ p {
 					<label for="password">Password:</label> <input type="password"
 						id="password" name="password" required>
 				</div>
-				<button type="submit" class="login-btn">Login</button>
+				<div class="form-group">
+					<button type="submit" class="login-btn">GET OTP</button>
+				</div>
+				<div class="form-group">
+					<%
+					String msg = (String) request.getAttribute("message");
+					%>
+					<%
+					if (msg != null) {
+					%>
+					<h2><%=msg%></h2>
+					<%
+					}
+					%>
+				</div>
 			</form>
 		</div>
 
 	</form>
 
-	<%
-	String msg = (String) request.getAttribute("message");
-	%>
-	<%
-	if (msg != null) {
-	%>
-	<p><%=msg%></p>
-	<%
-	}
-	%>
+
 
 
 

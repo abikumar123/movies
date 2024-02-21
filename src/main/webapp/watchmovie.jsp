@@ -29,8 +29,8 @@ body {
 					height="500px" width="500px">
 					<br>
 		<%= movie.getMovieDescription()%><br>
-		<iframe src="<%=movie.getMovielink() %>"></iframe><br>
-		<%=movie.getMovielink() %>
+		<a href="<%=movie.getMovielink() %>">click to watch the movie</a><br>
+		
 
 </body>
 </html>

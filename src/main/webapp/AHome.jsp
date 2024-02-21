@@ -25,8 +25,11 @@ img:hover {
 </head>
 <body>
 	<p>welcome to admin home page</p>
+	
+	<%HttpSession s=request.getSession(); %>
+	<%List<Movie> movies=(List)s.getAttribute("movies"); %>
 
-	<%List<Movie> movies=(List)request.getAttribute("movies"); %>
+	
 
 	<table border="2px" class="table">
 		<thead>
@@ -64,7 +67,7 @@ img:hover {
 				<td><img src="data:image/jped;base64,<%=base64image %>"
 					height="100px" width="100px"></td>
 					<td><%= movie.getMovieDescription() %></td>
-					<td><%= movie.getMovielink() %></td>
+					<td><a href="<%= movie.getMovielink() %>">watch movie</a></td>
 
 				<td><a href="deletemovie?id=<%=movie.getMovieid() %>">delete</a></td>
 				<td><a href="movieedit?id=<%=movie.getMovieid() %>">edit</a></td>
